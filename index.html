@@ -1,35 +1,9 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Likee Rule Assistant MAX</title><style>
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial;background:#0b1120;color:#e5e7eb}header{padding:18px;background:#111827;position:sticky;top:0;z-index:4}h1{margin:0 0 10px}input{width:100%;box-sizing:border-box;padding:14px;border-radius:12px;border:1px solid #334155;background:#0f172a;color:#fff;font-size:16px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}button{border:0;border-radius:999px;padding:9px 13px;background:#243244;color:#fff;cursor:pointer}.active{outline:2px solid #60a5fa}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;padding:16px}.card{background:#172033;border-radius:16px;padding:16px;border-left:6px solid #64748b}.Reject{border-color:#ef4444}.Conceal{border-color:#f59e0b}.Ignore{border-color:#64748b}.TagA{border-color:#3b82f6}.pill{display:inline-block;background:#0f172a;padding:4px 8px;border-radius:999px;font-size:12px}.quick{margin:16px;padding:16px;background:#111827;border-radius:16px}.row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #263244}.empty{padding:30px;text-align:center;color:#94a3b8}
-</style></head><body><header><h1>Likee Rule Assistant MAX</h1><input id="q" placeholder="Ищи: нож, вейп, паспорт, пушка, поезд..."><div class="toolbar" id="filters"><button data-f="all">Все</button><button data-f="Reject">Reject</button><button data-f="Conceal">Conceal</button><button data-f="Ignore">Ignore</button><button data-f="Tag A">Tag A</button></div></header>
-<section class="quick"><h3>⚡ Режим 3 секунды</h3><div class="row"><span>Пистолет на человека</span><b>Reject</b></div><div class="row"><span>Нож лежит</span><b>Ignore</b></div><div class="row"><span>Ножевое нападение</span><b>Reject</b></div><div class="row"><span>Вейп</span><b>Conceal</b></div><div class="row"><span>QR «купить вейп»</span><b>Reject</b></div><div class="row"><span>Паспорт</span><b>Reject</b></div></section>
-<main id="grid" class="grid"></main>
-<script>
-const rules=[
-{t:"Оружие",a:"Reject",d:"Оружие направлено на человека или используется для нападения.",k:["оружие","пушка","пистолет","автомат","gun"]},
-{t:"Ножевое нападение",a:"Reject",d:"Удар ножом или явная угроза ножом.",k:["нож","лезвие"]},
-{t:"Кровь и открытые раны",a:"Reject",d:"Тяжёлые кровавые сцены, органы, открытые раны.",k:["кровь","рана","органы"]},
-{t:"Жестокость к животным",a:"Reject",d:"Реальное избиение, убийство или расчленение животного.",k:["животное","кот","собака"]},
-{t:"Суицид / самоповреждение",a:"Reject",d:"Петля, порезы и другие явные попытки самоповреждения.",k:["суицид","петля","порез"]},
-{t:"Нацистская символика",a:"Reject",d:"Пропагандистский экстремистский контекст.",k:["свастика","нацист"]},
-{t:"Буддийская свастика",a:"Ignore",d:"Не путать с нацистским контекстом.",k:["буддийская","буддизм"]},
-{t:"Взрослый курит",a:"Conceal",d:"Курение без рекламы и продажи.",k:["вейп","iqos","курит","сигарета"]},
-{t:"Продажа никотина",a:"Reject",d:"QR, цена, ссылка или прямой призыв купить.",k:["qr","купить","продажа","телеграм"]},
-{t:"Паспорт / личные данные",a:"Reject",d:"Читаемые паспортные или иные персональные данные.",k:["паспорт","документ","телефон","карта"]},
-{t:"Мокрая девушка / полотенце",a:"Tag A",d:"Эротический контекст без полной наготы. Проверять край подмышки и контекст.",k:["полотенце","ванна","мокрая девушка"]},
-{t:"Опасное лазание / зацепер",a:"Reject",d:"Крыши поездов, между вагонами, опасные высотные действия.",k:["зацепер","поезд","крыша"]},
-{t:"Roblox/Gacha с кровью",a:"Reject",d:"Детский хоррор с расчленением или выраженной кровью.",k:["roblox","gacha"]},
-{t:"Ахегао / сексуализированная мимика",a:"Reject",d:"Явно сексуализированный контекст.",k:["ахегао"]},
-{t:"Полная нагота",a:"Reject",d:"Видны интимные части тела.",k:["голая","гениталии","нагота"]},
-{t:"Политический контент",a:"Conceal",d:"Чувствительная политическая тематика по вашему Rule Book.",k:["политика","митинг"]},
-{t:"Казино / ставки",a:"Reject",d:"Продвижение азартных игр или призыв делать ставки.",k:["казино","ставки","букмекер"]},
-{t:"Наркотики",a:"Reject",d:"Употребление, продажа или инструкция.",k:["наркотики","нарк","клад"]},
-{t:"Мошенничество",a:"Reject",d:"Обман, гарантированный заработок, ложные финансовые обещания.",k:["скам","мошенничество","легкие деньги"]},
-{t:"Спам / накрутка",a:"Reject",d:"Спам, продажа накрутки и повторяющийся рекламный мусор.",k:["спам","накрутка","подписчики"]},
-{t:"Медицина без графики",a:"Ignore",d:"Учебный медицинский материал без акцента на крови.",k:["операция","медицина"]},
-{t:"Военный стреляет в воздух",a:"Ignore",d:"Нет нападения на людей.",k:["военный","стрельба в воздух"]},
-{t:"Обычный домашний питомец",a:"Ignore",d:"Обычный контент без жестокости.",k:["кот","собака","питомец"]}
-];
-let filter="all";const q=document.getElementById("q"),g=document.getElementById("grid");
-function render(){const s=q.value.trim().toLowerCase();const list=rules.filter(r=>(filter==="all"||r.a===filter)&&(s===""||r.t.toLowerCase().includes(s)||r.d.toLowerCase().includes(s)||r.k.some(k=>k.includes(s))));g.innerHTML=list.length?list.map(r=>`<article class="card ${r.a.replace(" ","")}"><span class="pill">${r.a}</span><h3>${r.t}</h3><p>${r.d}</p><small>Ключи: ${r.k.join(", ")}</small></article>`).join(""):'<div class="empty">Ничего не найдено</div>'}
-document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>{filter=b.dataset.f;document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("active",x===b));render()});q.oninput=render;document.querySelector("#filters button").classList.add("active");render();
-</script></body></html>
+<header>
+<h1>Likee Rule Assistant</h1>
+
+<input id="search" placeholder="нож, паспорт, вейп...">
+</header>
+
+<div id="grid" class="grid"></div>
+
+<script src="app.js"></script>
