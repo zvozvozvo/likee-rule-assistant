@@ -1,9 +1,38 @@
-<header>
-<h1>Likee Rule Assistant</h1>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Likee Rule Assistant</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
 
-<input id="search" placeholder="нож, паспорт, вейп...">
+<header>
+  <h1>Likee Rule Assistant</h1>
+  <input id="search" placeholder="нож, паспорт, вейп, roblox...">
 </header>
+
+<div class="toolbar">
+  <button data-filter="all">Все</button>
+  <button data-filter="Reject">Reject</button>
+  <button data-filter="Conceal">Conceal</button>
+  <button data-filter="Tag A">Tag A</button>
+  <button data-filter="Ignore">Ignore</button>
+</div>
+
+<section class="quick">
+  <h3>⚡ Режим 3 секунды</h3>
+  <div class="row"><span>Пистолет на человека</span><b>Reject</b></div>
+  <div class="row"><span>Нож лежит</span><b>Ignore</b></div>
+  <div class="row"><span>Вейп</span><b>Conceal</b></div>
+  <div class="row"><span>QR купить вейп</span><b>Reject</b></div>
+  <div class="row"><span>Паспорт</span><b>Reject</b></div>
+</section>
 
 <div id="grid" class="grid"></div>
 
 <script src="app.js"></script>
+</body>
+</html>
