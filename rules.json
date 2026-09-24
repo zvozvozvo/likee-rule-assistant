@@ -1,0 +1,29 @@
+[
+  {
+    "id":"violence_gun",
+    "category":"Violence",
+    "title":"Оружие направлено на человека",
+    "action":"Reject",
+    "ban":"Ствол направлен на человека.",
+    "allow":"Военный контекст без нападения.",
+    "keywords":["оружие","пушка","пистолет"]
+  },
+  {
+    "id":"passport",
+    "category":"Privacy",
+    "title":"Паспорт",
+    "action":"Reject",
+    "ban":"Читаемые персональные данные.",
+    "allow":"Замазанный документ.",
+    "keywords":["паспорт","документ"]
+  },
+  {
+    "id":"vape",
+    "category":"Smoking",
+    "title":"Взрослый курит",
+    "action":"Conceal",
+    "ban":"Курение без рекламы.",
+    "allow":"Нет продажи.",
+    "keywords":["вейп","iqos"]
+  }
+]
