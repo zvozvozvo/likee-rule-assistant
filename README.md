@@ -1,1 +1,1 @@
-# Likee Rule Assistant V4
+# Likee Rule Assistant V6 WITH AI SUP SOON
