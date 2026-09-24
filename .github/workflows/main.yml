@@ -1,0 +1,16 @@
+name: Apply Patch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Workflow ready"
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: apply patch"
