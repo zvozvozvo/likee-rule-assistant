@@ -1,0 +1,45 @@
+:root{
+ --bg:#0b1120;
+ --card:#172033;
+ --text:#e5e7eb;
+ --reject:#ef4444;
+ --conceal:#f59e0b;
+ --tag:#3b82f6;
+ --ignore:#64748b;
+}
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:system-ui;
+}
+header{
+ position:sticky;
+ top:0;
+ background:#111827;
+ padding:16px;
+ z-index:5;
+}
+input{
+ width:100%;
+ padding:14px;
+ border-radius:12px;
+ border:none;
+ background:#1f2937;
+ color:white;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+ gap:14px;
+ padding:16px;
+}
+.card{
+ background:var(--card);
+ border-radius:16px;
+ padding:16px;
+ border-left:6px solid var(--ignore);
+}
+.Reject{border-color:var(--reject);}
+.Conceal{border-color:var(--conceal);}
+.TagA{border-color:var(--tag);}
