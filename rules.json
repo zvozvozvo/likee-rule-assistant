@@ -1,29 +1,56 @@
 [
-  {
-    "id":"violence_gun",
-    "category":"Violence",
-    "title":"Оружие направлено на человека",
-    "action":"Reject",
-    "ban":"Ствол направлен на человека.",
-    "allow":"Военный контекст без нападения.",
-    "keywords":["оружие","пушка","пистолет"]
-  },
-  {
-    "id":"passport",
-    "category":"Privacy",
-    "title":"Паспорт",
-    "action":"Reject",
-    "ban":"Читаемые персональные данные.",
-    "allow":"Замазанный документ.",
-    "keywords":["паспорт","документ"]
-  },
-  {
-    "id":"vape",
-    "category":"Smoking",
-    "title":"Взрослый курит",
-    "action":"Conceal",
-    "ban":"Курение без рекламы.",
-    "allow":"Нет продажи.",
-    "keywords":["вейп","iqos"]
-  }
+{
+"id":"violence_gun",
+"category":"Violence",
+"title":"Оружие направлено на человека",
+"action":"Reject",
+"ban":"Ствол направлен на человека.",
+"allow":"Военный контекст без нападения.",
+"keywords":["оружие","пушка","пистолет","gun"]
+},
+{
+"id":"knife_attack",
+"category":"Violence",
+"title":"Ножевое нападение",
+"action":"Reject",
+"ban":"Удар ножом.",
+"allow":"Нож лежит без угрозы.",
+"keywords":["нож","лезвие"]
+},
+{
+"id":"passport",
+"category":"Privacy",
+"title":"Паспорт",
+"action":"Reject",
+"ban":"Читаемый документ.",
+"allow":"Замазанные данные.",
+"keywords":["паспорт","документ"]
+},
+{
+"id":"vape",
+"category":"Smoking",
+"title":"Взрослый курит",
+"action":"Conceal",
+"ban":"Курение без рекламы.",
+"allow":"Нет продажи.",
+"keywords":["вейп","iqos"]
+},
+{
+"id":"wet_towel",
+"category":"Adult",
+"title":"Девушка в полотенце",
+"action":"Tag A",
+"ban":"Эротический контекст.",
+"allow":"Нет эротизации.",
+"keywords":["полотенце","ванна"]
+},
+{
+"id":"hook_train",
+"category":"Danger",
+"title":"Зацепер",
+"action":"Reject",
+"ban":"Между вагонами или на крыше.",
+"allow":"Обычная поездка.",
+"keywords":["поезд","зацепер"]
+}
 ]
